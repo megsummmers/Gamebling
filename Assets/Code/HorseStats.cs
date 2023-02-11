@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Horse : MonoBehaviour
+public class HorseStats : MonoBehaviour
 {
+    //ref other scripts
+    public HorseControls horseScript;
+    public RaceControls raceScript;
     //variables
     public int horse_stamina = 0;
     public int horse_speed = 0;
@@ -12,12 +15,6 @@ public class Horse : MonoBehaviour
     public TextMeshProUGUI stamina_txt;
     public TextMeshProUGUI speed_txt;
     public TextMeshProUGUI money_txt;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -47,9 +44,5 @@ public class Horse : MonoBehaviour
         } else if (horse_stamina == 10){
             Debug.Log("max stamina");
         }
-    }
-
-    public void startRace(){
-        
     }
 }

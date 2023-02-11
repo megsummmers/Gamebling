@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: d59454ec89c744a6790702f366a0c43f
+  - enabled: 1
+    path: Assets/Scenes/HorseTraining.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Competition.unity
+    guid: 0b002d73bf8b94f58917fc689583bc22
   m_configObjects: {}

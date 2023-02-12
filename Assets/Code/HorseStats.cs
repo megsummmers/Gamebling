@@ -11,7 +11,7 @@ public class HorseStats : MonoBehaviour
     public float horse_stamina = 0;
     const float calc_stamina = 2;
     public int horse_speed = 0;
-    const int calc_speed = 25;
+    const int calc_speed = 35;
     public int money = 450;
     public TextMeshProUGUI stamina_txt;
     public TextMeshProUGUI speed_txt;
@@ -34,9 +34,9 @@ public class HorseStats : MonoBehaviour
             horse_speed += 1;
             money -= 100;
         } else if (money <= 100) {
-            Debug.Log("not enough money");
+            //Debug.Log("not enough money");
         } else if (horse_speed == 10){
-            Debug.Log("max speed");
+            //Debug.Log("max speed");
         }
     }
 
@@ -45,9 +45,9 @@ public class HorseStats : MonoBehaviour
             horse_stamina += 1f;
             money -= 100;
         } else if (money <= 100) {
-            Debug.Log("not enough money");
+            //Debug.Log("not enough money");
         } else if (horse_stamina == 10){
-            Debug.Log("max stamina");
+            //Debug.Log("max stamina");
         }
     }
 
@@ -59,8 +59,8 @@ public class HorseStats : MonoBehaviour
             raceScript.p_speed = calc_speed + (horse_speed * 2);
             //rotate camera
             camera.transform.Rotate(0, 180.0f, 0);
-            competitionUI.SetActive(true);
             trainingUI.SetActive(false);
+            competitionUI.SetActive(true);
         }
     }
 }

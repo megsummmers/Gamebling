@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RaceControls : MonoBehaviour
 {
+    public HorseStats playerHorse;
     //variables
     public bool start = false;
     //horse objects
@@ -38,7 +39,17 @@ public class RaceControls : MonoBehaviour
         if (ranking.Count == 8){
             var rankArray = ranking.ToArray();
             for (int i = 0; i < rankArray.Length; i++){
-                Debug.Log(rankArray[i]);
+                if(rankArray[i] == 0){
+                    if(i >= 4){
+                        playerHorse.money += 35;
+                    } else if (i == 3){
+                        playerHorse.money += 75;
+                    } else if (i == 2){
+                        playerHorse.money += 150;
+                    } else if (i == 1){
+                        playerHorse.money += 300;
+                    }
+                }
             }
         }
     }

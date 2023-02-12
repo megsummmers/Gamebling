@@ -53,13 +53,18 @@ public class HorseStats : MonoBehaviour
     }
 
     public void compete(){
-        calc_speed += horse_speed * 2;
-        calc_stamina += horse_stamina;
-        raceScript.p_stamina = calc_stamina;
-        raceScript.p_speed = calc_speed;
-        //rotate camera
-        camera.transform.Rotate(0, 180.0f, 0);
-        competitionUI.SetActive(true);
-        trainingUI.SetActive(false);
+        if (money >= 25){
+            money -= 25;
+            //calculate real speed and stamina
+            calc_speed += horse_speed * 2;
+            calc_stamina += horse_stamina;
+            //set the variables in the other scripts
+            raceScript.p_stamina = calc_stamina;
+            raceScript.p_speed = calc_speed;
+            //rotate camera
+            camera.transform.Rotate(0, 180.0f, 0);
+            competitionUI.SetActive(true);
+            trainingUI.SetActive(false);
+        }
     }
 }

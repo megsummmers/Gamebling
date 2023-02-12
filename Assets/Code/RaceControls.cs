@@ -26,6 +26,7 @@ public class RaceControls : MonoBehaviour
     //camera things
     public GameObject camera;
     public GameObject competitionUI;
+    public GameObject buttonsUI;
     public GameObject trainingUI;
     //info tabs
     public GameObject staminaInfo;
@@ -49,7 +50,6 @@ public class RaceControls : MonoBehaviour
         if (ranking.Count == 8){
             var rankArray = ranking.ToArray();
             for (int i = 0; i < rankArray.Length; i++){
-                Debug.Log(i + " place, horse " + rankArray[i]);
                 if(rankArray[i] == 8){
                     if(i >= 4){
                         playerHorse.GetComponent<HorseStats>().money += 35;
@@ -71,22 +71,26 @@ public class RaceControls : MonoBehaviour
             horse7.GetComponent<HorseControls>().reset();
             horseP.GetComponent<HorseControls>().reset();
             ranking.Clear();
+            start = false;
         }
     }
 
     public void returnTraining(){
         //rotate camera
-        camera.transform.Rotate(0, 180.0f, 0);
-        competitionUI.SetActive(false);
-        trainingUI.SetActive(true);
+        if(!start){
+            camera.transform.Rotate(0, 180.0f, 0);
+            competitionUI.SetActive(false);
+            trainingUI.SetActive(true);
+            buttonsUI.SetActive(false);
+        }
     }
 
     public void startGame(){
-        Debug.Log("started");
+        competitionUI.SetActive(true);
+        start = true;
         horseP.GetComponent<HorseControls>().stamina = p_stamina;
         horseP.GetComponent<HorseControls>().setSpeed = p_speed;
         horseP.GetComponent<HorseControls>().speed = p_speed;
-        Debug.Log(p_speed + ", " + p_stamina);
         horse1.GetComponent<HorseControls>().start = true;
         horse2.GetComponent<HorseControls>().start = true;
         horse3.GetComponent<HorseControls>().start = true;

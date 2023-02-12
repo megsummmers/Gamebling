@@ -26,6 +26,9 @@ public class RaceControls : MonoBehaviour
     public GameObject camera;
     public GameObject competitionUI;
     public GameObject trainingUI;
+    //info tabs
+    public GameObject staminaInfo;
+    public GameObject speedInfo;
 
     void Start(){
     }
@@ -88,6 +91,22 @@ public class RaceControls : MonoBehaviour
         horse6.GetComponent<HorseControls>().start = true;
         horse7.GetComponent<HorseControls>().start = true;
         horseP.GetComponent<HorseControls>().start = true;
+    }
+
+    public void stHoverOn(){
+        staminaInfo.SetActive(true);
+    }
+
+    public void stHoverOff(){
+        staminaInfo.SetActive(false);
+    }
+
+    public void spHoverOn(){
+        speedInfo.SetActive(true);
+    }
+
+    public void spHoverOff(){
+        speedInfo.SetActive(false);
     }
 }
 

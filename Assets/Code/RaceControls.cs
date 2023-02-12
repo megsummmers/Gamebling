@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RaceControls : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class RaceControls : MonoBehaviour
     //info tabs
     public GameObject staminaInfo;
     public GameObject speedInfo;
+    //change horse name
+    public TextMeshProUGUI name;
+    public TextMeshProUGUI newName;
 
     void Start(){
     }
@@ -91,6 +95,10 @@ public class RaceControls : MonoBehaviour
         horse6.GetComponent<HorseControls>().start = true;
         horse7.GetComponent<HorseControls>().start = true;
         horseP.GetComponent<HorseControls>().start = true;
+    }
+
+    public void changeName(){
+        name.text = "#8 " + newName.text;
     }
 
     public void stHoverOn(){

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RaceControls : MonoBehaviour
 {
-    public HorseStats playerHorse;
+    public GameObject playerHorse;
     //variables
     public bool start = false;
     //horse objects
@@ -19,9 +19,13 @@ public class RaceControls : MonoBehaviour
     public int horseFinished;
     public static List<int> ranking = new List<int>();
     //player horse stats
-    public int p_stamina;
+    public float p_stamina;
     public int p_speed;
     public bool sent = false;
+    //camera things
+    public GameObject camera;
+    public GameObject competitionUI;
+    public GameObject trainingUI;
 
     void Start(){
     }
@@ -29,36 +33,53 @@ public class RaceControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(sent){
-            Debug.Log(p_speed + " " + p_stamina);
-        }
+
     }
 
-    public void finishedLine(){
-        ranking.Add(horseFinished);
+    public void finishedLine(int horseNum){
+        horseFinished = horseNum;
+        ranking.Add(horseNum);
         if (ranking.Count == 8){
             var rankArray = ranking.ToArray();
             for (int i = 0; i < rankArray.Length; i++){
-                if(rankArray[i] == 0){
+                Debug.Log(i + " place, horse " + rankArray[i]);
+                if(rankArray[i] == 8){
                     if(i >= 4){
-                        playerHorse.money += 35;
+                        playerHorse.GetComponent<HorseStats>().money += 35;
                     } else if (i == 3){
-                        playerHorse.money += 75;
+                        playerHorse.GetComponent<HorseStats>().money += 100;
                     } else if (i == 2){
-                        playerHorse.money += 150;
+                        playerHorse.GetComponent<HorseStats>().money += 150;
                     } else if (i == 1){
-                        playerHorse.money += 300;
+                        playerHorse.GetComponent<HorseStats>().money += 300;
                     }
                 }
             }
+            horse1.GetComponent<HorseControls>().reset();
+            horse2.GetComponent<HorseControls>().reset();
+            horse3.GetComponent<HorseControls>().reset();
+            horse4.GetComponent<HorseControls>().reset();
+            horse5.GetComponent<HorseControls>().reset();
+            horse6.GetComponent<HorseControls>().reset();
+            horse7.GetComponent<HorseControls>().reset();
+            horseP.GetComponent<HorseControls>().reset();
+            ranking.Clear();
         }
     }
 
-    public void startGame(){
-        horseP.GetComponent<HorseControls>().stamina += p_stamina;
-        horseP.GetComponent<HorseControls>().setSpeed += p_speed;
-        horseP.GetComponent<HorseControls>().speed += p_speed;
+    public void returnTraining(){
+        //rotate camera
+        camera.transform.Rotate(0, 180.0f, 0);
+        competitionUI.SetActive(false);
+        trainingUI.SetActive(true);
+    }
 
+    public void startGame(){
+        Debug.Log("started");
+        horseP.GetComponent<HorseControls>().stamina = p_stamina;
+        horseP.GetComponent<HorseControls>().setSpeed = p_speed;
+        horseP.GetComponent<HorseControls>().speed = p_speed;
+        Debug.Log(p_speed + ", " + p_stamina);
         horse1.GetComponent<HorseControls>().start = true;
         horse2.GetComponent<HorseControls>().start = true;
         horse3.GetComponent<HorseControls>().start = true;

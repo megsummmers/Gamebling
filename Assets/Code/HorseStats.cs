@@ -9,11 +9,11 @@ public class HorseStats : MonoBehaviour
     //ref other scripts
     public RaceControls raceScript;
     //variables
-    public int horse_stamina = 0;
-    int calc_stamina = 2;
+    public float horse_stamina = 0;
+    const float calc_stamina = 2;
     public int horse_speed = 0;
-    int calc_speed = 25;
-    public int money = 200;
+    const int calc_speed = 25;
+    public int money = 450;
     public TextMeshProUGUI stamina_txt;
     public TextMeshProUGUI speed_txt;
     public TextMeshProUGUI money_txt;
@@ -43,7 +43,7 @@ public class HorseStats : MonoBehaviour
 
     public void increaseStamina(){
         if(horse_stamina <= 9 && money >= 100){
-            horse_stamina += 1;
+            horse_stamina += 0.5f;
             money -= 100;
         } else if (money <= 100) {
             Debug.Log("not enough money");
@@ -55,12 +55,9 @@ public class HorseStats : MonoBehaviour
     public void compete(){
         if (money >= 25){
             money -= 25;
-            //calculate real speed and stamina
-            calc_speed += horse_speed * 2;
-            calc_stamina += horse_stamina;
             //set the variables in the other scripts
-            raceScript.p_stamina = calc_stamina;
-            raceScript.p_speed = calc_speed;
+            raceScript.p_stamina = calc_stamina + (horse_stamina);
+            raceScript.p_speed = calc_speed + (horse_speed * 2);
             //rotate camera
             camera.transform.Rotate(0, 180.0f, 0);
             competitionUI.SetActive(true);

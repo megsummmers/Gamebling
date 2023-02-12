@@ -42,7 +42,7 @@ public class HorseStats : MonoBehaviour
 
     public void increaseStamina(){
         if(horse_stamina <= 9 && money >= 100){
-            horse_stamina += 0.5f;
+            horse_stamina += 1f;
             money -= 100;
         } else if (money <= 100) {
             Debug.Log("not enough money");
@@ -55,7 +55,7 @@ public class HorseStats : MonoBehaviour
         if (money >= 25){
             money -= 25;
             //set the variables in the other scripts
-            raceScript.p_stamina = calc_stamina + (horse_stamina);
+            raceScript.p_stamina = calc_stamina + (horse_stamina / 2);
             raceScript.p_speed = calc_speed + (horse_speed * 2);
             //rotate camera
             camera.transform.Rotate(0, 180.0f, 0);

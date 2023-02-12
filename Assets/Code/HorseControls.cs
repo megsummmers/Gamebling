@@ -18,13 +18,15 @@ public class HorseControls : MonoBehaviour
     public float endPos;
     float timer = 0;
 
+    public GameObject raceEnd;
+
     void Start() {
         speed = setSpeed;
         stamina = setStamina;
         startPosX = transform.position.x;
         startPosY = transform.position.y;
         startPosZ = transform.position.z;
-        endPos = startPosX + 650;
+        endPos = raceEnd.transform.position.x;
     }
 
     // Update is called once per frame

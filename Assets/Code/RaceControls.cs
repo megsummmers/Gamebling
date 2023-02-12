@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RaceControls : MonoBehaviour
 {
-    public HorseControls horseScript;
-    public HorseStats playerhorse;
     //variables
     public bool start = false;
     //horse objects
@@ -17,21 +15,38 @@ public class RaceControls : MonoBehaviour
     public GameObject horse6;
     public GameObject horse7;
     public GameObject horseP;
+    public int horseFinished;
+    public static List<int> ranking = new List<int>();
+    //player horse stats
+    public int p_stamina;
+    public int p_speed;
+    public bool sent = false;
+
+    void Start(){
+    }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if(sent){
+            Debug.Log(p_speed + " " + p_stamina);
+        }
     }
 
-    public void horseFinished(){
-        Debug.Log("horse done!");
+    public void finishedLine(){
+        ranking.Add(horseFinished);
+        if (ranking.Count == 8){
+            var rankArray = ranking.ToArray();
+            for (int i = 0; i < rankArray.Length; i++){
+                Debug.Log(rankArray[i]);
+            }
+        }
     }
 
     public void startGame(){
-        horseP.GetComponent<HorseControls>().stamina = playerhorse.horse_stamina;
-        horseP.GetComponent<HorseControls>().setSpeed = playerhorse.horse_speed;
-        horseP.GetComponent<HorseControls>().speed = playerhorse.horse_speed;
+        horseP.GetComponent<HorseControls>().stamina += p_stamina;
+        horseP.GetComponent<HorseControls>().setSpeed += p_speed;
+        horseP.GetComponent<HorseControls>().speed += p_speed;
 
         horse1.GetComponent<HorseControls>().start = true;
         horse2.GetComponent<HorseControls>().start = true;
@@ -43,3 +58,5 @@ public class RaceControls : MonoBehaviour
         horseP.GetComponent<HorseControls>().start = true;
     }
 }
+
+

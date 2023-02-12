@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhorse: {fileID: 0}
-  raceScript: {fileID: 0}
+  raceScript: {fileID: 2056382761}
   start: 0
   stamina: 9
   setSpeed: 40
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhorse: {fileID: 0}
-  raceScript: {fileID: 0}
+  raceScript: {fileID: 2056382761}
   start: 0
   stamina: 7
   setSpeed: 35
@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhorse: {fileID: 0}
-  raceScript: {fileID: 0}
+  raceScript: {fileID: 2056382761}
   start: 0
   stamina: 8
   setSpeed: 30
@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhorse: {fileID: 0}
-  raceScript: {fileID: 0}
+  raceScript: {fileID: 2056382761}
   start: 0
   stamina: 7
   setSpeed: 45
@@ -1893,7 +1893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhorse: {fileID: 0}
-  raceScript: {fileID: 0}
+  raceScript: {fileID: 2056382761}
   start: 0
   stamina: 9
   setSpeed: 40
@@ -2122,7 +2122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhorse: {fileID: 0}
-  raceScript: {fileID: 0}
+  raceScript: {fileID: 2056382761}
   start: 0
   stamina: 8
   setSpeed: 40
@@ -2560,10 +2560,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhorse: {fileID: 0}
-  raceScript: {fileID: 0}
+  raceScript: {fileID: 2056382761}
   start: 0
-  stamina: 8
-  setSpeed: 40
+  stamina: 3
+  setSpeed: 30
   speed: 0
 --- !u!1 &1672314520
 GameObject:
@@ -2655,7 +2655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhorse: {fileID: 0}
-  raceScript: {fileID: 0}
+  raceScript: {fileID: 2056382761}
   start: 0
   stamina: 6
   setSpeed: 45
@@ -2747,7 +2747,7 @@ GameObject:
   - component: {fileID: 2056382762}
   - component: {fileID: 2056382761}
   m_Layer: 0
-  m_Name: Script
+  m_Name: RaceScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

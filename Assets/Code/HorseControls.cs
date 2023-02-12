@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HorseControls : MonoBehaviour
 {
-    public HorseStats playerhorse;
     public RaceControls raceScript;
     //variables
+    [SerializeField] private int horseNum;
     public bool start = false;
     public float stamina = 8;
     public int setSpeed = 40;
@@ -23,12 +23,14 @@ public class HorseControls : MonoBehaviour
         //create timer
         timer += Time.deltaTime;
         //run from -150 to 500 in canvas 810 to 1460
-        if (transform.position.x <= 1460 && start){
+        if (transform.position.x < 1460 && start){
             transform.Translate(Vector3.right * (Time.deltaTime * speed));
-        } else { //reset speed
+        } else if (transform.position.x >= 1460 && start) { //reset speed
             speed = setSpeed;
-            raceScript.horseFinished();
-            Debug.Log("sent");
+            raceScript.horseFinished = horseNum;
+            raceScript.finishedLine();
+            Debug.Log("Horse " + horseNum + " finished");
+            start = false;
         }
         //check if stamina starts affecting the horses 
         if (timer >= stamina && speed >= 25){

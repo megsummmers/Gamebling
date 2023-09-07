@@ -28,12 +28,14 @@ public class RaceControls : MonoBehaviour
     public GameObject competitionUI;
     public GameObject buttonsUI;
     public GameObject trainingUI;
+    public GameObject resultsUI;
     //info tabs
     public GameObject staminaInfo;
     public GameObject speedInfo;
     //change horse name
     public TextMeshProUGUI name;
     public TextMeshProUGUI newName;
+    public TextMeshProUGUI results;
 
     void Start(){
     }
@@ -52,13 +54,21 @@ public class RaceControls : MonoBehaviour
             for (int i = 0; i < rankArray.Length; i++){
                 if(rankArray[i] == 8){
                     if(i >= 4){
-                        playerHorse.GetComponent<HorseStats>().money += 35;
+                        playerHorse.GetComponent<HorseStats>().money += 50;
+                        results.text = "You placed " + i + "th and won $50\n\nCongratulations!";
+                        resultsUI.SetActive(true);
                     } else if (i == 3){
                         playerHorse.GetComponent<HorseStats>().money += 100;
+                        results.text = "You placed 3rd and won $100\n\nCongratulations!";
+                        resultsUI.SetActive(true);
                     } else if (i == 2){
-                        playerHorse.GetComponent<HorseStats>().money += 150;
+                        playerHorse.GetComponent<HorseStats>().money += 200;
+                        results.text = "You placed 2nd and won $200\n\nCongratulations!";
+                        resultsUI.SetActive(true);
                     } else if (i == 1){
                         playerHorse.GetComponent<HorseStats>().money += 300;
+                        results.text = "You placed 1st and won $300\n\nCongratulations!";
+                        resultsUI.SetActive(true);
                     }
                 }
             }
@@ -86,6 +96,7 @@ public class RaceControls : MonoBehaviour
     }
 
     public void startGame(){
+        resultsUI.SetActive(false);
         competitionUI.SetActive(true);
         start = true;
         horseP.GetComponent<HorseControls>().stamina = p_stamina;
